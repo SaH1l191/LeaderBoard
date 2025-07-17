@@ -12,10 +12,10 @@ import { SparklesText } from "./components/magicui/sparkles-text"
 function App() {
   const [users, setUsers] = useState([])
   const [selectedUserId, setSelectedUserId] = useState("")
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const fetchUsers = async () => {
       try {
-        const res = await api.get("https://leaderboard-be-production.up.railway.app/api/users")
+        const res = await api.get(`${BACKEND_URL}/api/users`)
         console.log("fetchUsers", res.data)
         setUsers(res.data)
         if (!selectedUserId && res.data.length > 0) {

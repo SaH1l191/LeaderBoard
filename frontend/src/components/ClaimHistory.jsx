@@ -8,7 +8,7 @@ import api from "../lib/api"
 export default function ClaimHistory({ userId }) {
   const [history, setHistory] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (!userId) {
       setHistory([])
@@ -17,7 +17,7 @@ export default function ClaimHistory({ userId }) {
 
     setIsLoading(true)
     api
-      .get(`https://leaderboard-be-production.up.railway.app/api/claim/history/${userId}`)
+      .get(`${BACKEND_URL}/api/claim/history/${userId}`)
       .then((res) => {
         setHistory(res.data)
       })

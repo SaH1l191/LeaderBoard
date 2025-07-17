@@ -5,7 +5,9 @@ import { io } from "socket.io-client"
 import { Trophy, Medal, Award, Crown, TrendingUp } from "lucide-react"
 import React from 'react'
 import api from "../lib/api"
-const socket = io("https://leaderboard-be-production.up.railway.app", {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+const socket = io(`${BACKEND_URL}`, {
     transports: ['websocket'], // ensures WebSocket is prioritized
   });
   console.log("🔍 VITE_BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
@@ -15,8 +17,9 @@ export default function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await api.get("https://leaderboard-be-production.up.railway.app/api/claim/leaderboard")
+      const res = await api.get(`${BACKEND_URL}/api/claim/leaderboard`)
       console.log("logging leaderboard ",res.data)
+      console.log("test ",`${BACKEND_URL}/api/claim/leaderboard`)
       setLeaders(res.data)
     } catch (error) {
       console.error("Error fetching leaderboard:", error)

@@ -7,14 +7,14 @@ import React from "react"
 export default function AddUserForm({ onUserAdded }) {
   const [name, setName] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!name.trim()) return
 
     setIsLoading(true)
     try {
-      const res = await api.post("/api/users", { name: name.trim() })
+      const res = await api.post(`${BACKEND_URL}/api/users`, { name: name.trim() })
       console.log("logging res from adduesrform ",res.data)
       setName("")
       onUserAdded()
