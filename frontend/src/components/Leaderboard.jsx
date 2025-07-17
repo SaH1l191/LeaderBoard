@@ -5,7 +5,9 @@ import { io } from "socket.io-client"
 import { Trophy, Medal, Award, Crown, TrendingUp } from "lucide-react"
 import React from 'react'
 import api from "../lib/api"
-const socket = io(import.meta.env.VITE_BACKEND_URL);
+const socket = io(import.meta.env.VITE_BACKEND_URL, {
+    transports: ['websocket'], // ensures WebSocket is prioritized
+  });
 
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([])
