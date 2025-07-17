@@ -15,7 +15,7 @@ export default function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await api.get("https://leader-board-jade.vercel.app/api/claim/leaderboard/api/claim/leaderboard")
+      const res = await api.get("https://leaderboard-be-production.up.railway.app/api/claim/leaderboard/api/claim/leaderboard")
       console.log("logging leaderboard ",res.data)
       setLeaders(res.data)
     } catch (error) {
