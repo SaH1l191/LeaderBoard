@@ -17,7 +17,7 @@ export default function ClaimHistory({ userId }) {
 
     setIsLoading(true)
     api
-      .get(`/api/claim/history/${userId}`)
+      .get(`https://leaderboard-be-production.up.railway.app/api/claim/history/${userId}`)
       .then((res) => {
         setHistory(res.data)
       })

@@ -15,7 +15,7 @@ function App() {
 
 const fetchUsers = async () => {
       try {
-        const res = await api.get("/api/users")
+        const res = await api.get("https://leaderboard-be-production.up.railway.app/api/users")
         console.log("fetchUsers", res.data)
         setUsers(res.data)
         if (!selectedUserId && res.data.length > 0) {

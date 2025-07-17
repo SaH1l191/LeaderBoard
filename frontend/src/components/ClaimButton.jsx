@@ -13,7 +13,7 @@ export default function ClaimButton({ userId, onClaim }) {
 
     setIsLoading(true)
     try {
-      const res = await api.post("/api/claim", { userId })
+      const res = await api.post("https://leaderboard-be-production.up.railway.app/api/claim", { userId })
       onClaim()
       setJustClaimed(true)
       setTimeout(() => setJustClaimed(false), 2000)

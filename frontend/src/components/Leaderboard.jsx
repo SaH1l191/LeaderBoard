@@ -5,10 +5,10 @@ import { io } from "socket.io-client"
 import { Trophy, Medal, Award, Crown, TrendingUp } from "lucide-react"
 import React from 'react'
 import api from "../lib/api"
-const socket = io(import.meta.env.VITE_BACKEND_URL, {
+const socket = io("https://leaderboard-be-production.up.railway.app", {
     transports: ['websocket'], // ensures WebSocket is prioritized
   });
-
+  console.log("🔍 VITE_BACKEND_URL:", import.meta.env.VITE_BACKEND_URL);
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([])
   const [isLoading, setIsLoading] = useState(true)
