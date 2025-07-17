@@ -3,6 +3,7 @@ import { useState } from "react"
 import axios from "axios"
 import { Gift, Loader2, Sparkles } from "lucide-react"
 import React from 'react'
+import api from "../lib/api"
 export default function ClaimButton({ userId, onClaim }) {
   const [isLoading, setIsLoading] = useState(false)
   const [justClaimed, setJustClaimed] = useState(false)
@@ -12,7 +13,7 @@ export default function ClaimButton({ userId, onClaim }) {
 
     setIsLoading(true)
     try {
-      const res = await axios.post("http://localhost:5000/api/claim", { userId })
+      const res = await api.post("/api/claim", { userId })
       onClaim()
       setJustClaimed(true)
       setTimeout(() => setJustClaimed(false), 2000)

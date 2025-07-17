@@ -1,6 +1,6 @@
  
 import { useState } from "react"
-import axios from "axios"
+import api from "../lib/api"
 import { UserPlus, Loader2 } from "lucide-react"
 import React from "react"
 
@@ -14,7 +14,7 @@ export default function AddUserForm({ onUserAdded }) {
 
     setIsLoading(true)
     try {
-      const res = await axios.post("http://localhost:5000/api/users", { name: name.trim() })
+      const res = await api.post("/api/users", { name: name.trim() })
       console.log("logging res from adduesrform ",res.data)
       setName("")
       onUserAdded()

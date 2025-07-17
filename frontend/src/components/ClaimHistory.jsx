@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { History, Clock, Gift, TrendingUp } from "lucide-react"
 import React from 'react'
+import api from "../lib/api"
 
 export default function ClaimHistory({ userId }) {
   const [history, setHistory] = useState([])
@@ -15,8 +16,8 @@ export default function ClaimHistory({ userId }) {
     }
 
     setIsLoading(true)
-    axios
-      .get(`http://localhost:5000/api/claim/history/${userId}`)
+    api
+      .get(`/api/claim/history/${userId}`)
       .then((res) => {
         setHistory(res.data)
       })

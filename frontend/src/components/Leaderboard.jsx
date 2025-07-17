@@ -4,7 +4,8 @@ import axios from "axios"
 import { io } from "socket.io-client"
 import { Trophy, Medal, Award, Crown, TrendingUp } from "lucide-react"
 import React from 'react'
-const socket = io("http://localhost:5000")
+import api from "../lib/api"
+const socket = io(import.meta.env.VITE_BACKEND_URL);
 
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([])
@@ -12,7 +13,7 @@ export default function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/claim/leaderboard")
+      const res = await api.get("/api/claim/leaderboard")
       console.log("logging leaderboard ",res.data)
       setLeaders(res.data)
     } catch (error) {

@@ -1,5 +1,5 @@
 
-import axios from "axios"
+import api from './lib/api';
 import React, { useState, useEffect } from 'react';
 import { Trophy, Sparkles } from "lucide-react"
 import AddUserForm from "./components/AddUserForm"
@@ -15,7 +15,7 @@ function App() {
 
 const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users")
+        const res = await api.get("/api/users")
         console.log("fetchUsers", res.data)
         setUsers(res.data)
         if (!selectedUserId && res.data.length > 0) {
@@ -27,7 +27,7 @@ const fetchUsers = async () => {
     }
 
   useEffect(() => {
-    
+     
     fetchUsers()
   }, [])
 
